@@ -1,16 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   draw_map.c                                         :+:      :+:    :+:   */
+/*   draw_map_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahmaidi <ahmaidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/20 18:26:59 by ahmaidi           #+#    #+#             */
-/*   Updated: 2022/05/21 13:26:08 by ahmaidi          ###   ########.fr       */
+/*   Updated: 2022/05/21 13:32:24 by ahmaidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
+
+static int	ft_stop(int keycode, t_vars	*data)
+{
+	(void) keycode;
+		data->on = 0;
+	return (0);
+}
 
 void	draw_map(t_vars	*data)
 {
@@ -29,6 +36,8 @@ void	draw_map(t_vars	*data)
 		}
 		x++;
 	}
+	mlx_hook(data->mlx_win, 3, 0, ft_stop, data);
+	mlx_loop_hook(data->mlx, rander_frame, data);
 	mlx_hook(data->mlx_win, 2, 1, key_hook, data);
 	mlx_loop(data->mlx);
 }

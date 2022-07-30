@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   filling_map.c                                      :+:      :+:    :+:   */
+/*   filling_map_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahmaidi <ahmaidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/24 16:05:51 by ahmaidi           #+#    #+#             */
-/*   Updated: 2022/07/30 19:37:27 by ahmaidi          ###   ########.fr       */
+/*   Updated: 2022/07/30 19:45:16 by ahmaidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 static void	ft_check_compenent(char *line, t_vars *data)
 {

@@ -1,34 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   draw_map.c                                         :+:      :+:    :+:   */
+/*   ft_bzero_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahmaidi <ahmaidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/20 18:26:59 by ahmaidi           #+#    #+#             */
-/*   Updated: 2022/05/21 13:26:08 by ahmaidi          ###   ########.fr       */
+/*   Created: 2022/05/16 12:39:33 by ahmaidi           #+#    #+#             */
+/*   Updated: 2022/05/21 12:03:47 by ahmaidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
-void	draw_map(t_vars	*data)
+void	ft_bzero(void *s, size_t n)
 {
-	int		x;
-	int		y;
+	size_t	i;
 
-	x = 0;
-	data->render_frame = 1;
-	while (data->map[x])
+	i = 0;
+	while (i < n)
 	{
-		y = 0;
-		while (data->map[x][y])
-		{
-			draw_components(data->map[x][y], data, x, y);
-			y++;
-		}
-		x++;
+		((char *)s)[i] = 0;
+		i++;
 	}
-	mlx_hook(data->mlx_win, 2, 1, key_hook, data);
-	mlx_loop(data->mlx);
 }

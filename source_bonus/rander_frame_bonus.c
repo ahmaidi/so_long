@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rander_frame.c                                     :+:      :+:    :+:   */
+/*   rander_frame_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahmaidi <ahmaidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 06:13:28 by ahmaidi           #+#    #+#             */
-/*   Updated: 2022/05/16 12:22:22 by ahmaidi          ###   ########.fr       */
+/*   Updated: 2022/05/24 12:28:53 by ahmaidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 static	void	draw_left(t_vars *data)
 {
@@ -56,5 +56,6 @@ int	rander_frame(t_vars	*data)
 		data->i++;
 		data->i = data->i % 4;
 	}
+	animate_enemy(data);
 	return (0);
 }

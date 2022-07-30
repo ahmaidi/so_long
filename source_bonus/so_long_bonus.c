@@ -1,34 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   draw_map.c                                         :+:      :+:    :+:   */
+/*   so_long_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahmaidi <ahmaidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/20 18:26:59 by ahmaidi           #+#    #+#             */
-/*   Updated: 2022/05/21 13:26:08 by ahmaidi          ###   ########.fr       */
+/*   Created: 2022/03/18 15:55:33 by ahmaidi           #+#    #+#             */
+/*   Updated: 2022/05/23 15:18:16 by ahmaidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
-void	draw_map(t_vars	*data)
+int	main(int argc, char **argv)
 {
-	int		x;
-	int		y;
+	t_vars	*data;
 
-	x = 0;
-	data->render_frame = 1;
-	while (data->map[x])
+	data = malloc(sizeof(t_vars));
+	if (argc == 2)
 	{
-		y = 0;
-		while (data->map[x][y])
-		{
-			draw_components(data->map[x][y], data, x, y);
-			y++;
-		}
-		x++;
+		detecte_error(argv[1], data);
+		init(data);
+		draw_map(data);
 	}
-	mlx_hook(data->mlx_win, 2, 1, key_hook, data);
-	mlx_loop(data->mlx);
+	else if (argc == 1)
+	{
+		error("\033[33mHint:./so_long_bonus file.ber !!\n", data);
+	}
+	else
+	{
+		error("\033[91mtoo many arguments !!\n", data);
+	}
+	return (0);
 }

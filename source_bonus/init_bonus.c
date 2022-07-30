@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init.c                                             :+:      :+:    :+:   */
+/*   init_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahmaidi <ahmaidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 07:52:14 by ahmaidi           #+#    #+#             */
-/*   Updated: 2022/05/21 12:37:25 by ahmaidi          ###   ########.fr       */
+/*   Updated: 2022/05/24 12:36:43 by ahmaidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 static int	close_it(t_vars *data)
 {
@@ -37,7 +37,7 @@ static void	init_imges(t_vars *data)
 	data->img_bk = mlx_xpm_file_to_image(data->mlx, "./imgs/bk.xpm",
 			&(data->img_width), &(data->img_height));
 	data->img_player = mlx_xpm_file_to_image(data->mlx,
-			"./imgs/player/player_m.xpm",
+			"./imgs/player/player1.xpm",
 			&(data->img_width), &(data->img_height));
 	data->img_col = mlx_xpm_file_to_image(data->mlx, "./imgs/coins/C_1.xpm",
 			&(data->img_width), &(data->img_height));
@@ -47,15 +47,43 @@ static void	init_imges(t_vars *data)
 			&(data->img_width), &(data->img_height));
 }
 
+static void	init_moves_player(t_vars *data)
+{
+	data->p_lf_1 = mlx_xpm_file_to_image(data->mlx, "./imgs/l/l_1.xpm",
+			&(data->img_width), &(data->img_height));
+	data->p_lf_2 = mlx_xpm_file_to_image(data->mlx, "./imgs/l/l_2.xpm",
+			&(data->img_width), &(data->img_height));
+	data->p_lf_3 = mlx_xpm_file_to_image(data->mlx, "./imgs/l/l_3.xpm",
+			&(data->img_width), &(data->img_height));
+	data->p_lf_4 = mlx_xpm_file_to_image(data->mlx, "./imgs/l/l_4.xpm",
+			&(data->img_width), &(data->img_height));
+	data->p_rt_1 = mlx_xpm_file_to_image(data->mlx, "./imgs/r/r_1.xpm",
+			&(data->img_width), &(data->img_height));
+	data->p_rt_2 = mlx_xpm_file_to_image(data->mlx, "./imgs/r/r_2.xpm",
+			&(data->img_width), &(data->img_height));
+	data->p_rt_3 = mlx_xpm_file_to_image(data->mlx, "./imgs/r/r_3.xpm",
+			&(data->img_width), &(data->img_height));
+	data->p_rt_4 = mlx_xpm_file_to_image(data->mlx, "./imgs/r/r_4.xpm",
+			&(data->img_width), &(data->img_height));
+}
+
 void	init(t_vars *data)
 {
 	data->mlx = mlx_init();
 	map_sizes(data);
 	data->mlx_win = mlx_new_window(data->mlx, data->map_width,
-			data->map_height, "so_long");
+			data->map_height, "so_long_bonus");
 	mlx_hook(data->mlx_win, 17, 1, close_it, data);
 	init_imges(data);
+	init_moves_player(data);
 	count_collect(data);
 	data->moves = 0;
+	data->i = 0;
+	data->dir = 0;
+	data->on = 0;
+	data->lose = 0;
+	data->animate_en = 0;
 	position_player(data);
+	position_of_enemy(data);
+	position_of_coll(data);
 }

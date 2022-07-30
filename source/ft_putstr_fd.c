@@ -1,34 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   draw_map.c                                         :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahmaidi <ahmaidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/20 18:26:59 by ahmaidi           #+#    #+#             */
-/*   Updated: 2022/05/21 13:26:08 by ahmaidi          ###   ########.fr       */
+/*   Created: 2021/11/08 21:21:16 by ahmaidi           #+#    #+#             */
+/*   Updated: 2022/05/21 13:13:53 by ahmaidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	draw_map(t_vars	*data)
+void	ft_putstr_fd(char *s, int fd)
 {
-	int		x;
-	int		y;
+	int	i;
 
-	x = 0;
-	data->render_frame = 1;
-	while (data->map[x])
+	i = 0;
+	if (!s)
+		return ;
+	while (s[i])
 	{
-		y = 0;
-		while (data->map[x][y])
-		{
-			draw_components(data->map[x][y], data, x, y);
-			y++;
-		}
-		x++;
+		ft_putchar_fd(s[i], fd);
+		i++;
 	}
-	mlx_hook(data->mlx_win, 2, 1, key_hook, data);
-	mlx_loop(data->mlx);
 }

@@ -1,34 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   draw_map.c                                         :+:      :+:    :+:   */
+/*   ft_strcmp_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahmaidi <ahmaidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/20 18:26:59 by ahmaidi           #+#    #+#             */
-/*   Updated: 2022/05/21 13:26:08 by ahmaidi          ###   ########.fr       */
+/*   Created: 2022/03/16 00:11:13 by ahmaidi           #+#    #+#             */
+/*   Updated: 2022/05/21 12:04:07 by ahmaidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
-void	draw_map(t_vars	*data)
+int	ft_strcmp(char const *s1, char const *s2)
 {
-	int		x;
-	int		y;
+	size_t	i;
 
-	x = 0;
-	data->render_frame = 1;
-	while (data->map[x])
-	{
-		y = 0;
-		while (data->map[x][y])
-		{
-			draw_components(data->map[x][y], data, x, y);
-			y++;
-		}
-		x++;
-	}
-	mlx_hook(data->mlx_win, 2, 1, key_hook, data);
-	mlx_loop(data->mlx);
+	i = 0;
+	while (s1[i] == s2[i] && s1[i] != '\0' && s2[i] != '\0')
+		i++;
+	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
 }

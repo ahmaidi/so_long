@@ -6,7 +6,7 @@
 /*   By: ahmaidi <ahmaidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/17 06:25:32 by ahmaidi           #+#    #+#             */
-/*   Updated: 2022/05/16 16:00:58 by ahmaidi          ###   ########.fr       */
+/*   Updated: 2022/05/21 12:11:46 by ahmaidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,4 @@ void	draw_components(int c, t_vars *data, int x, int y)
 		draw(data->img_exit, data, y, x);
 	else if (c == 'C')
 		draw(data->img_col, data, y, x);
-	else if (c == 'N')
-		draw(data->img_enemy, data, y, x);
 }

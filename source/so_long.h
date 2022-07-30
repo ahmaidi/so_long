@@ -6,7 +6,7 @@
 /*   By: ahmaidi <ahmaidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 15:53:48 by ahmaidi           #+#    #+#             */
-/*   Updated: 2022/05/17 16:59:59 by ahmaidi          ###   ########.fr       */
+/*   Updated: 2022/05/21 13:31:45 by ahmaidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,21 +50,10 @@ typedef struct s_vars
 	void			*img_col;
 	void			*img_exit;
 	void			*img_enemy;
-	void			*p_lf_1;
-	void			*p_lf_2;
-	void			*p_lf_3;
-	void			*p_lf_4;
-	void			*p_rt_1;
-	void			*p_rt_2;
-	void			*p_rt_3;
-	void			*p_rt_4;
 	int				nb_collect;
-	int				lose;
 	int				win;
-	int				on;
-	int				i;
-	int				dir;
 	int				moves;
+	int				render_frame;
 	t_coordinate	position;	
 }t_vars;
 
@@ -76,6 +65,8 @@ char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strdup(const char *s1);
 char	*get_next_line(int fd);
 char	*get_next_line(int fd);
+void	ft_putstr_fd(char *s, int fd);
+void	ft_putchar_fd(char c, int fd);
 int		ft_strchr(const char *s, int c);
 void	filling_map(t_vars *data, int fd);
 void	detecte_error(char *str, t_vars *data);
@@ -97,13 +88,8 @@ void	draw_components(int c, t_vars *data, int i, int j);
 void	position_player(t_vars *data);
 void	draw(void *img, t_vars *data, int i, int j);
 char	*ft_itoa(int n);
-int		rander_frame(t_vars	*data);
 void	count_it(t_vars *data);
-int		draw_collect(t_vars *data);
-t_vars	*position_of_enemy(t_vars *data);
-void	ft_lose(t_vars *data);
 void	ft_win(t_vars *data);
-void	ft_retry(t_vars *data);
 
 /*-------------------------------------------------------*/
 
