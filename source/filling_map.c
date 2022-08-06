@@ -6,11 +6,34 @@
 /*   By: ahmaidi <ahmaidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/24 16:05:51 by ahmaidi           #+#    #+#             */
-/*   Updated: 2022/08/04 10:42:25 by ahmaidi          ###   ########.fr       */
+/*   Updated: 2022/08/06 18:43:29 by ahmaidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+static void	empty_lines(char *s, t_vars *data)
+{
+	int	i;
+	int	empty_l;
+
+	i = 0;
+	empty_l = 0;
+	while (s[i])
+	{
+		if (s[i] == '\n' && s[i + 1] == '\n')
+		{
+			empty_l = 1;
+			break ;
+		}
+		i++;
+	}
+	if (s[0] == '\n' || s[ft_strlen(s) - 1] == '\n' || empty_l == 1)
+	{
+		data->error = 1;
+		error("\033[91mEmpty lines in Map!!\n", data);
+	}
+}
 
 static void	ft_check_compenent(char *line, t_vars *data)
 {
@@ -37,11 +60,6 @@ void	filling_map(t_vars *data, int fd)
 
 	str = NULL;
 	line = get_next_line(fd);
-	if (ft_strlen(line) == 1)
-	{
-		data->error = 1;
-		error("\033[91mEmpty lines in Map!!\n", data);
-	}
 	while (line)
 	{
 		ft_check_compenent(line, data);
@@ -49,11 +67,7 @@ void	filling_map(t_vars *data, int fd)
 		free(line);
 		line = get_next_line(fd);
 	}
-	if (str[ft_strlen(str) - 1] == '\n')
-	{
-		data->error = 1;
-		error("\033[91mEmpty lines in Map!!\n", data);
-	}
+	empty_lines(str, data);
 	data->map = ft_split(str, '\n');
 	free(str);
 	close(fd);
